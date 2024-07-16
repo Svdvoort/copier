@@ -28,7 +28,7 @@ Create new repository and copy the git link when asked during the set-up.
 Then, create a project itself:
 
 ```bash
-copier copy --trust gh:Svdvoort/cookiecutter-svdvoort.git /path/to/repo
+copier copy --trust gh:Svdvoort/copier.git /path/to/repo
 ```
 
 Now you can open the the project folder in Visual Studio Code and you are good to go!
