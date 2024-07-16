@@ -1,0 +1,40 @@
+{
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.watcherExclude": {},
+        "search.exclude": {},
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "python.poetryPath": "/etc/poetry/bin/poetry",
+        "python.defaultInterpreterPath": "/.pyenv/shims/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "EditorConfig.EditorConfig",
+        "magicstack.MagicPython",
+        "ms-python.mypy-type-checker",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "KevinRose.vsc-python-indent",
+        "lextudio.restructuredtext",
+        "trond-snekvik.simple-rst",
+        "streetsidesoftware.code-spell-checker",
+        "kamikillerto.vscode-colorize",
+        "shardulm94.trailing-spaces",
+        "tamasfe.even-better-toml",
+        "redhat.vscode-yaml",
+        "njpwerner.autodocstring",
+        "ms-azuretools.vscode-docker",
+        "github.vscode-github-actions",
+        "DavidAnson.vscode-markdownlint",
+        "charliermarsh.ruff"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "sudo poetry install --with dev,docs &&  poetry run pre-commit install",
+  "workspaceFolder": "/workspace",
+  "overrideCommand": true
+}

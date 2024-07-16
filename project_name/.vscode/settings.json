@@ -1,0 +1,34 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.fixAll": "always"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.poetryPath": "${env:HOME}/.poetry/bin/poetry",
+  "python.testing.pytestArgs": [
+    "tests",
+    "--no-cov"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "autoDocstring.docstringFormat": "google",
+  "autoDocstring.startOnNewLine": false,
+  "restructuredtext.linter.doc8.executablePath": "${workspaceFolder}/.venv/bin/doc8",
+  "restructuredtext.linter.doc8.extraArgs": [
+    "--config",
+    "${workspaceFolder}/pyproject.toml"
+  ],
+  "restructuredtext.pythonRecommendation.disabled": true,
+  "ruff.nativeServer": true
+}

@@ -1,0 +1,31 @@
+name: misspell
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      #----------------------------------------------
+      # Check out repository
+      #----------------------------------------------
+      - name: Check-out repository
+        uses: actions/checkout@v4
+
+      #----------------------------------------------
+      # Check for misspellings
+      #----------------------------------------------
+      - uses: sobolevn/misspell-fixer-action@0.1.0
+
+      #----------------------------------------------
+      # Create pull request to fix spellings
+      #----------------------------------------------
+
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Fixes by misspell-fixer"
+          title: "Typos fix by misspell-fixer"

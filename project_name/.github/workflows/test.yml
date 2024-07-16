@@ -1,0 +1,77 @@
+name: Testing
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # TODO: would be awesome if we can somehow get all these versions
+        # from the pyproject.yaml file.
+        # It is possible to get python version from that file
+        # but then it only loads one single version and we
+        # don't detect changes with other versions.
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    # Timeout to make sure we don't leave jobs running accidentally
+    timeout-minutes: 20
+
+    steps:
+      #---------------------------------------------
+      # Check out repository
+      #----------------------------------------------
+      - name: Check-out repository
+        uses: actions/checkout@v4
+
+      #----------------------------------------------
+      # Set up python
+      # Correct python versions are loaded
+      # automatically from pyproject.toml
+      #----------------------------------------------
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      #----------------------------------------------
+      # Install python poetry
+      #----------------------------------------------
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: latest
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      #----------------------------------------------
+      # Load cache if exists or otherwise set up
+      # the cache
+      #----------------------------------------------
+      - name: Set up cache
+        id: cached-poetry-dependencies
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
+      #----------------------------------------------
+      # Install dependencies if cache does not exist
+      #----------------------------------------------
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root --with dev
+      #----------------------------------------------
+      # Install root project
+      #----------------------------------------------
+      - name: Install project
+        run: poetry install --no-interaction
+
+      #----------------------------------------------
+      # Run tests
+      # Currently not running any tests on this local repo
+      # perhaps should implement some
+      #----------------------------------------------
+
+      - name: Run checks
+        run: |
+          make test
