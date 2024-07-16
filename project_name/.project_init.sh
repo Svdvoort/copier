@@ -13,7 +13,7 @@ if [ -d .git/ ]; then
 fi
 
 # Generate license
-lice $1 -o $2 -p $3 > $3/LICENSE
+lice $1 -o $2 -p $3 > LICENSE
 
 # Set-up pyenv
 eval "$(pyenv init --path)"
