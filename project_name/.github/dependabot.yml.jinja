@@ -1,0 +1,38 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "05:00"
+      timezone: "Europe/Amsterdam"
+    labels:
+      - "python"
+      - "chore"
+    rebase-strategy: "auto"
+    reviewers:
+      - "{{ organization }}"
+    versioning-strategy: "increase"
+    groups:
+      minor-and-patch:
+        applied-to: version-updates
+        update-types:
+          - "patch"
+          - "minor"
+
+  - package-ecosystem: "github-actions"
+    directory: "/.github/workflows"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "05:00"
+      timezone: "Europe/Amsterdam"
+    labels:
+      - "actions"
+      - "chore"
+    rebase-strategy: "auto"
+    reviewers:
+      - "{{ organization }}"
+    versioning-strategy: "increase"
+
