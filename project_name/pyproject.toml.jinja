@@ -111,6 +111,15 @@ max-line-length = 100
 allow-long-titles = true
 ignore = ["D001"]
 
+[tool.ruff]
+line-length = 100
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["ALL"]
+fixable = ["COM812"]
+ignore = ["ANN101"]
+
 [tool.ruff.lint.isort]
 force-single-line = true
 lines-after-imports = 2
@@ -119,8 +128,11 @@ lines-between-types = 1
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
-skip-magic-trailing-comma = false
+skip-magic-trailing-comma = true
 line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
 
 
 [tool.ruff.lint.pydocstyle]
