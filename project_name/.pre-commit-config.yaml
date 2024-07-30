@@ -3,7 +3,7 @@ repos:
     rev: v0.5.5
     hooks:
       - id: ruff
-        args: ["--config=lint.select=['E9', 'F63', 'F7', 'F82']"]
+        args: ["--config", "pyproject.toml", "--select", "E9,F63,F7,F82"]
       - id: ruff-format
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0

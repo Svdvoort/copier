@@ -35,7 +35,7 @@ clean:
 
 .PHONY: lint
 lint:
-	poetry run ruff check --config="lint.select=['E9', 'F63', 'F7', 'F82']"
+	poetry run ruff check --config pyproject.toml --select E9,F63,F7,F82
 	poetry run ruff format --diff
 
 .PHONY: unit
