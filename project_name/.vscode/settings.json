@@ -32,10 +32,6 @@
   "python.testing.unittestEnabled": false,
   "autoDocstring.docstringFormat": "google",
   "autoDocstring.startOnNewLine": false,
-  "cSpell.words": [
-    "glioseg",
-    "joblib"
-  ],
   "prettier.tabWidth": 4,
   "ruff.nativeServer": true
 }
