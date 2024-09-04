@@ -18,7 +18,7 @@ jobs:
           pip install pre-commit
           pre-commit autoupdate
 
-      - uses: peter-evans/create-pull-request@v6
+      - uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: update/pre-commit-hooks
