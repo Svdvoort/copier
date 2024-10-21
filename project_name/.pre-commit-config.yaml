@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.9
+    rev: v0.7.0
     hooks:
       - id: ruff
         args: ["--config", "pyproject.toml", "--select", "E9,F63,F7,F82"]
@@ -30,7 +30,7 @@ repos:
       - id: trailing-whitespace
         exclude: ^tests/.*/fixtures/.*
   - repo: https://github.com/python-poetry/poetry
-    rev: "1.8.4"
+    rev: "1.8.0"
     hooks:
       - id: poetry-lock
       - id: poetry-check
