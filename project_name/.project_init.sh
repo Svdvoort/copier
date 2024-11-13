@@ -31,7 +31,7 @@ pyenv exec pip install poetry
 # Set-up virtual environment using poetry
 poetry env use $5
 poetry run pip install --upgrade pip
-poetry install --with dev,docs,copier
+poetry install --with dev,copier
 
 # Initial setup of git
 git init --initial-branch="main"
