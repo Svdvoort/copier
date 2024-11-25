@@ -19,7 +19,7 @@ jobs:
         run: |
           pip install pre-commit
           cd project_name
-          pre-commit autoupdate
+          pre-commit autoupdate --repo https://github.com/astral-sh/ruff-pre-commit --repo https://github.com/pre-commit/pre-commit-hooks
 
       - uses: peter-evans/create-pull-request@v6
         with:
