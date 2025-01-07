@@ -1,18 +1,18 @@
 [build-system]
-requires = ["poetry-core>=1.8.0"]
+requires = ["poetry-core>=2.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
+[project]
 name = "{{ project_name }}"
 description = "{{ project_description }}"
-version = "0.1.0"
-license = "{{ license|upper }}"
+dynamic = ["version", "dependencies"]
+license = {text = "{{ license|upper }}" }
 
 authors = []
+requires-python=">=3.9,<3.13"
 
 readme = "README.md"
 
-repository = "https://github.com/{{ organization }}/{{ project_name }}"
 
 keywords = []
 
@@ -23,8 +23,19 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
+[project.urls]
+repository = "https://github.com/{{ organization }}/{{ project_name }}"
+
+
+[tool.poetry]
+version = "0.1.0"
+requires-poetry = ">=2.0"
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8.0"
+
+
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
 
 [tool.poetry.group.dev]
 optional = true
